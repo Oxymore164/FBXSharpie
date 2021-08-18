@@ -1,5 +1,6 @@
 ﻿using UkooLabs.FbxSharpie.Tokens;
 using UkooLabs.FbxSharpie.Tokens.Value;
+using System.Globalization;
 
 namespace UkooLabs.FbxSharpie.Extensions
 {
@@ -12,7 +13,7 @@ namespace UkooLabs.FbxSharpie.Extensions
 				var splitValue = value.Split('.', 'e', 'E');
 				if (splitValue.Length > 1 && splitValue[1].Length > 6)
 				{
-					if (!double.TryParse(value, out var d))
+					if (!double.TryParse(value, NumberStyles.Any, CultureInfo.InvariantCulture, out double d))
 					{
 						numberToken = null;
 						return false;
@@ -20,7 +21,7 @@ namespace UkooLabs.FbxSharpie.Extensions
 					numberToken = new DoubleToken(d);
 					return true;
 				}
-				if (!float.TryParse(value, out var f))
+				if (!float.TryParse(value, NumberStyles.Any, CultureInfo.InvariantCulture, out var f))
 				{
 					numberToken = null;
 					return false;
@@ -28,7 +29,7 @@ namespace UkooLabs.FbxSharpie.Extensions
 				numberToken = new FloatToken(f);
 				return true;
 			}
-			if (!long.TryParse(value, out var l))
+			if (!long.TryParse(value, NumberStyles.Any, CultureInfo.InvariantCulture, out var l))
 			{
 				numberToken = null;
 				return false;
