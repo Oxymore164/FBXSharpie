@@ -102,7 +102,7 @@ namespace UkooLabs.FbxSharpie.Parsers
 				return true;
 			}
 
-			if (identifier.Equals("T") || identifier.Equals("F") || identifier.Equals("Y") || identifier.Equals("N"))
+			if (identifier.Equals("T") || identifier.Equals("F") || identifier.Equals("Y") || identifier.Equals("N") || identifier.Equals("W"))
 			{
 				token = new BooleanToken(identifier.Equals("T") || identifier.Equals("Y"));
 				return true;
